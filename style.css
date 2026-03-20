@@ -5,11 +5,15 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    position: fixed; /* Mencegah fitur scroll secara paksa di mobile */
+    overflow: hidden;
+}
+body {
     background-color: #0b3d2b;
     /* GANTI background-image body lama dengan Nebula Bintang ini */
     background-image: 
@@ -197,22 +201,20 @@ body {
 
 /* === PEMBUNGKUS BAWAH === */
 .pembungkus-bawah {
-    position: absolute; 
-    bottom: 0; left: 0;
-    width: 100%; 
-    height: 60vh; /* Ditinggikan agar seluruh elemen di dalamnya naik[cite: 9] */
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 65vh; /* Ditinggikan agar masjid dan awan ikut naik */
     pointer-events: none;
 }
 
 /* Masjid di Tengah Layar Bawah */
 .masjid {
     position: absolute;
-    bottom: 25%; /* Sedikit diturunkan relatif terhadap pembungkusnya agar menyatu dengan awan[cite: 9] */
+    bottom: 35%; /* Naik ke tengah bulan */
     left: 50%;
     transform: translateX(-50%);
     width: clamp(300px, 90%, 800px); 
     height: auto; 
-    max-height: 70%; 
+    max-height: 65%; 
     fill: #01120a;
     z-index: 40;
 }
@@ -221,7 +223,7 @@ body {
 .wadah-awan-interaksi {
     position: absolute;
     bottom: 0; left: 0;
-    width: 100%; height: 35%; /* Proporsi awan terhadap layar */
+    width: 100%; height: 45%; /* Awan ditinggikan mengikuti masjid */
     pointer-events: auto; 
     z-index: 50;
 }
@@ -253,12 +255,12 @@ body {
 /* Form Input & Tombol Diletakkan PAS di atas Awan Tengah */
 .area-interaksi {
     position: absolute;
-    top: 55%; /* Turun ke perut awan */
+    top: 35%; /* Ditarik LEBIH TINGGI menjauhi dasar layar */
     left: 50%; transform: translate(-50%, -50%);
     width: 90%; max-width: 450px;
     z-index: 60; text-align: center;
     opacity: 0;
-    animation: munculForm 1s ease forwards 1.2s; /* Muncul setelah awan selesai */
+    animation: munculForm 1s ease forwards 1.2s; 
 }
 
 @keyframes munculForm {
@@ -366,20 +368,17 @@ body {
 
 /* === PENYESUAIAN MOBILE ANDROID (LAYAR KECIL) === */
 @media (max-width: 600px) {
-    .judul-container { top: 10%; } /* Naikkan judul sedikit[cite: 9] */
-    .judul { font-size: 2rem; }
+    .judul-container { top: 8%; }
+    .judul { font-size: 1.8rem; }
     
-    /* Bulan dinaikkan */
-    .bulan { bottom: 45%; width: 220px; height: 220px; } 
-    
-    /* Pembungkus dinaikkan untuk menghindari scroll */
-    .pembungkus-bawah { height: 55vh; } 
-    
-    .masjid { bottom: 25%; width: 95%; max-height: 65%; } /* Sesuaikan tinggi masjid[cite: 9] */
+    /* Penyesuaian Masjid & Bulan */
+    .bulan { top: 18%; bottom: auto; width: 200px; height: 200px; } /* Patokan ke atas agar diam */
+    .pembungkus-bawah { height: 75vh; } /* Ditarik jauh ke atas */
+    .masjid { bottom: 38%; width: 95%; max-height: 55%; } /* Memotong tepat di tengah bulan */
     
     /* Awan & Interaksi */
-    .wadah-awan-interaksi { height: 40%; }
-    .area-interaksi { top: 40%; width: 95%; } /* Tombol dinaikkan menjauhi dasar layar[cite: 9] */
+    .wadah-awan-interaksi { height: 45%; } /* Awan ikut naik */
+    .area-interaksi { top: 35%; width: 95%; } /* Tombol ditarik aman dari dasar layar */
     
     #nama-input { font-size: 1rem; padding: 10px; }
     .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
