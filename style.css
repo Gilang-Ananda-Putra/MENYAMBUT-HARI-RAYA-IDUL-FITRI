@@ -6,6 +6,55 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b3d2b;
+    /* GANTI background-image body lama dengan Nebula Bintang ini */
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px),
+        radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 3px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* --- Shooting Stars (Bintang Jatuh Kembali) --- */
+.shooting-stars {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 60%;
+    z-index: 0; pointer-events: none;
+}
+.shooting-star {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #fff; border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: shoot infinite linear;
+}
+.shooting-star::after {
+    content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+    width: 40px; height: 1px;
+    background: linear-gradient(90deg, #fff, transparent);
+    left: 100%;
+}
+.shooting-star:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; animation-duration: 3s; }
+.shooting-star:nth-child(2) { top: 30%; left: 60%; animation-delay: 1.2s; animation-duration: 4s; }
+.shooting-star:nth-child(3) { top: 5%; left: 40%; animation-delay: 2.5s; animation-duration: 3.5s; }
+.shooting-star:nth-child(4) { top: 20%; left: 90%; animation-delay: 0.7s; animation-duration: 4.2s; }
+
+@keyframes shoot {
+    0% { transform: translate(0, 0) rotate(-35deg); opacity: 1; }
+    10% { opacity: 1; }
+    100% { transform: translate(-400px, 400px) rotate(-35deg); opacity: 0; }
+}
+
+body {
     background-color: #0b1a13; 
     color: #FFD700; 
     overflow: hidden; 
@@ -30,7 +79,46 @@ body {
 
 /* === Bintang Statis === */
 #langit-bintang {
-    position: absolute; top: 0; left: 0; width: 100%; height: 60%; pointer-events: none; z-index: 0;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+    /* Tambahan efek nebula dengan radial gradient yang lebih banyak */
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: zoomNebula 60s infinite linear alternate;
+}
+
+@keyframes zoomNebula {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* --- Shooting Stars --- */
+.shooting-stars {
+    position: absolute; top: 0; left: 0; width: 100%; height: 60%; z-index: 0; pointer-events: none;
+}
+.shooting-star {
+    position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8); opacity: 0; animation: shoot infinite linear;
+}
+.shooting-star::after {
+    content: ''; position: absolute; top: 50%; transform: translateY(-50%);
+    width: 40px; height: 1px; background: linear-gradient(90deg, #fff, transparent); left: 100%;
+}
+.shooting-star:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; animation-duration: 3s; }
+.shooting-star:nth-child(2) { top: 30%; left: 60%; animation-delay: 1.2s; animation-duration: 4s; }
+.shooting-star:nth-child(3) { top: 5%; left: 40%; animation-delay: 2.5s; animation-duration: 3.5s; }
+.shooting-star:nth-child(4) { top: 20%; left: 90%; animation-delay: 0.7s; animation-duration: 4.2s; }
+
+@keyframes shoot {
+    0% { transform: translate(0, 0) rotate(-35deg); opacity: 1; }
+    10% { opacity: 1; }
+    100% { transform: translate(-400px, 400px) rotate(-35deg); opacity: 0; }
 }
 .bintang-statis {
     position: absolute; background: #fff; border-radius: 50%;
@@ -56,13 +144,22 @@ body {
 /* === Bulan === */
 .bulan {
     position: absolute;
-    top: 5%; left: 50%; transform: translateX(-50%);
-    width: 35vh; height: 35vh;
-    min-width: 250px; min-height: 250px;
+    bottom: 35%; /* Berpatokan dari bawah agar sejajar dengan masjid */
+    left: 50%; 
+    transform: translateX(-50%);
+    width: clamp(250px, 35vh, 400px); 
+    height: clamp(250px, 35vh, 400px);
     background: radial-gradient(circle, #fffdda 0%, #f6e27b 100%);
     border-radius: 50%;
     box-shadow: 0 0 60px 20px rgba(246, 226, 123, 0.15);
-    z-index: 1;
+    z-index: 10; /* Pastikan di atas nebula tapi di belakang masjid */
+    opacity: 0;
+    animation: bulanNaik 2s ease-out forwards 0.5s;
+}
+
+@keyframes bulanNaik {
+    0% { transform: translate(-50%, 100px); opacity: 0; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
 }
 
 /* === 4 Ketupat (Baru) === */
@@ -98,70 +195,57 @@ body {
     text-shadow: 0 5px 15px rgba(0,0,0,0.8);
 }
 
-/* === PEMBUNGKUS BAWAH (Solusi Bug Mobile SVG) === */
+/* === PEMBUNGKUS BAWAH === */
 .pembungkus-bawah {
     position: absolute; bottom: 0; left: 0;
-    width: 100%; height: 50vh; /* Mengambil setengah layar bawah */
-    display: flex; flex-direction: column;
-    justify-content: flex-end; align-items: center;
-    pointer-events: none; /* Klik tembus ke elemen di dalam */
+    width: 100%; height: 50vh;
+    pointer-events: none;
 }
 
-/* Masjid */
+/* Masjid di Tengah Layar Bawah */
 .masjid {
-    width: 90%; max-width: 800px;
-    height: auto; max-height: 55%; /* Maksimal tingginya */
+    position: absolute;
+    bottom: 30%; /* Berada di atas awan, namun di tengah area pembungkus */
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(300px, 90%, 800px); /* Responsif tapi tidak terlalu kecil di HP */
+    height: auto; 
+    max-height: 70%; 
     fill: #01120a;
-    margin-bottom: -3%; /* Agak tenggelam ke dalam awan */
     z-index: 40;
 }
 
 /* Wadah Awan dan Interaksi */
 .wadah-awan-interaksi {
-    position: relative;
-    width: 100%; max-width: 1200px; /* Sedikit lebih lebar dari masjid */
-    height: 40%; min-height: 180px;
-    pointer-events: auto; /* Bisa di-klik */
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 35%; /* Proporsi awan terhadap layar */
+    pointer-events: auto; 
     z-index: 50;
 }
 
-/* Awan Bulat "Anak SD" (Animasi Menyebar) */
 .awan {
-    position: absolute; bottom: -5px; left: 0;
+    position: absolute; bottom: 0;
     width: 100%; height: 100%;
     transform-origin: bottom center;
 }
 
-/* Logika Animasi: Mulai dari skala kecil di tengah, lalu menyebar */
-.awan-tengah { 
-    z-index: 53; 
-    animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
-}
-.awan-kiri { 
-    z-index: 51; 
-    animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; 
-    opacity: 0; /* Sembunyikan sebelum delay */
-}
-.awan-kanan { 
-    z-index: 52; 
-    animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; 
-    opacity: 0; 
-}
+/* Logika Animasi Awan */
+.awan-tengah { z-index: 53; animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.awan-kiri { z-index: 51; opacity: 0; animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
+.awan-kanan { z-index: 52; opacity: 0; animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
 
 @keyframes sebarTengah {
     0% { transform: scale(0.2) translateY(50px); opacity: 0; }
-    50% { transform: scale(1.1) translateY(-10px); opacity: 1; }
     100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 @keyframes sebarKiri {
     0% { transform: translateX(30%) scale(0.2); opacity: 0; }
-    50% { transform: translateX(-15%) scale(1.1); opacity: 1; }
-    100% { transform: translateX(-25%) scale(0.9) translateY(10px); opacity: 1; }
+    100% { transform: translateX(-15%) scale(1); opacity: 1; } /* Menyebar penuh */
 }
 @keyframes sebarKanan {
     0% { transform: translateX(-30%) scale(0.2); opacity: 0; }
-    50% { transform: translateX(15%) scale(1.1); opacity: 1; }
-    100% { transform: translateX(25%) scale(0.9) translateY(10px); opacity: 1; }
+    100% { transform: translateX(15%) scale(1); opacity: 1; } /* Menyebar penuh */
 }
 
 /* Form Input & Tombol Diletakkan PAS di atas Awan Tengah */
@@ -196,8 +280,6 @@ body {
     background: linear-gradient(135deg, #FFD700, #FFE066);
     border: none; border-radius: 30px; cursor: pointer;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.2s;
-}
-.btn-mewah:hover { transform: scale(1.05); }
 
 
 /* ================== OVERLAY UCAPAN (Transparan Tembus Masjid) ================== */
@@ -282,17 +364,22 @@ body {
 
 /* === PENYESUAIAN MOBILE ANDROID (LAYAR KECIL) === */
 @media (max-width: 600px) {
-    .bulan { width: 200px; height: 200px; top: 8%; }
-    .judul-container { top: 15%; }
-    .judul { margin-bottom: 10px; }
+    .judul-container { top: 12%; }
+    .judul { font-size: 2rem; }
     
-    .pembungkus-bawah { height: 50vh; }
-    .wadah-awan-interaksi { height: 45%; }
-    .area-interaksi { top: 60%; width: 95%; }
+    /* Penyesuaian Masjid & Bulan */
+    .bulan { bottom: 38%; width: 220px; height: 220px; }
+    .masjid { bottom: 35%; width: 95%; max-height: 60%; }
+    
+    /* Awan & Interaksi */
+    .pembungkus-bawah { height: 45vh; }
+    .wadah-awan-interaksi { height: 40%; }
+    .area-interaksi { top: 50%; width: 95%; }
+    
     #nama-input { font-size: 1rem; padding: 10px; }
     .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
     
-    .kotak-ucapan { padding: 40px 15px; }
+    .kotak-ucapan { padding: 40px 15px; width: 95%; }
     .ketupat-ucapan { width: 40px; }
     .segel { width: 60px; height: 60px; font-size: 1.2rem; }
 }
