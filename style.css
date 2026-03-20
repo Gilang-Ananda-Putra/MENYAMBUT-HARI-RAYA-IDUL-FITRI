@@ -8,11 +8,9 @@
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    position: fixed; /* MENGUNCI LAYAR SECARA MUTLAK */
+    margin: 0; padding: 0;
+    width: 100vw; height: 100vh;
+    position: fixed; /* KUNCI MATI LAYAR, ANTI SCROLL */
     overflow: hidden;
     background-color: #0b3d2b;
     background-image: 
@@ -35,7 +33,7 @@ html, body {
 .font-dancing { font-family: 'Dancing Script', cursive; font-weight: 700; }
 
 /* =======================================================================
-   ANIMASI BINTANG KELAP-KELIP & BINTANG JATUH
+   NEBULA & BINTANG JATUH
    ======================================================================= */
 #langit-bintang {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
@@ -100,72 +98,85 @@ html, body {
 @keyframes turunKetupat { 0% { transform: translateY(-100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 @keyframes goyangKetupat { 0% { transform: rotate(4deg); } 100% { transform: rotate(-4deg); } }
 
+
 /* =======================================================================
-   KUNCI MATI POSISI: BULAN, MASJID, AWAN, DAN TOMBOL
+   KUNCI POSISI ABSOLUT: BULAN, MASJID, AWAN & FORM
+   (Menggunakan jangkar titik tengah agar presisi & anti-melar)
    ======================================================================= */
-/* 1. BULAN */
+
+/* 1. BULAN (Ditambatkan ke tengah layar, didorong ke atas sedikit) */
 .bulan {
     position: absolute;
-    bottom: 40vh; /* Patokan stabil dari bawah layar */
-    left: 50%; transform: translateX(-50%);
-    width: clamp(250px, 35vh, 450px); height: clamp(250px, 35vh, 450px);
+    top: 45%; 
+    left: 50%; 
+    transform: translate(-50%, -75%); 
+    width: clamp(220px, 35vh, 380px); 
+    height: clamp(220px, 35vh, 380px);
     background: radial-gradient(circle, #fffdda 0%, #f6e27b 100%);
     border-radius: 50%; box-shadow: 0 0 60px 20px rgba(246, 226, 123, 0.15);
     z-index: 10; opacity: 0; animation: bulanNaik 2s ease-out forwards 0.5s;
 }
-@keyframes bulanNaik { 0% { transform: translate(-50%, 100px); opacity: 0; } 100% { transform: translate(-50%, 0); opacity: 1; } }
+@keyframes bulanNaik { 0% { transform: translate(-50%, 50px); opacity: 0; } 100% { transform: translate(-50%, -75%); opacity: 1; } }
 
-/* 2. PEMBUNGKUS MASJID & AWAN (Ditambatkan agar posisi stabil) */
+/* 2. JANGKAR UTAMA (Titik tengah kasat mata untuk menempelkan masjid & awan) */
 .pembungkus-bawah {
     position: absolute;
-    bottom: 12vh; /* Ruang kosong 12vh di bawah layar untuk tempat Form/Tombol */
-    left: 50%; transform: translateX(-50%);
-    width: 100%; max-width: 900px;
-    height: 50vh; /* Tinggi area kerja */
-    pointer-events: none; z-index: 40;
+    top: 45%; /* Harus sama dengan top bulan */
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 100%; 
+    max-width: 600px; /* Membatasi lebar area kerja */
+    height: 0px; /* Dibuat 0 agar tidak mengganggu layout */
+    z-index: 40;
 }
 
-/* 3. MASJID (Duduk tepat di atas awan, memotong bulan) */
+/* 3. MASJID (Duduk manis persis di titik jangkar, memotong tengah bulan) */
 .masjid {
     position: absolute;
-    bottom: 100px; /* Masjid berada TEPAT 100px dari dasar pembungkus */
-    left: 50%; transform: translateX(-50%);
-    width: clamp(280px, 80%, 550px); /* Ukuran kokoh */
-    height: auto; max-height: 40vh; 
-    fill: #01120a; z-index: 40;
+    bottom: -30px; /* Turunkan 30px dari titik jangkar */
+    left: 50%; 
+    transform: translateX(-50%);
+    width: clamp(260px, 80%, 480px); 
+    height: auto; 
+    fill: #01120a; 
+    z-index: 40;
 }
 
-/* 4. AWAN (KUNCI TINGGI JADI KECIL / BUKAN RAKSASA) */
+/* 4. AWAN (KUNCI MATI UKURANNYA - ANTI RAKSASA) */
 .wadah-awan-interaksi {
     position: absolute;
-    bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 120%; max-width: 1000px; /* Lebar melebihi masjid sedikit */
-    height: 120px; /* TINGGI AWAN DIKUNCI MATI HANYA 120PX */
-    pointer-events: auto; z-index: 50;
+    top: -20px; /* Mulai pas di dasar masjid */
+    left: 50%; transform: translateX(-50%);
+    width: clamp(340px, 110%, 650px); /* Hanya selebar masjid + margin dikit */
+    height: 130px; /* TINGGI DIKUNCI MATI! AWAN TIDAK AKAN BISA MEMBESAR LAGI */
+    z-index: 50;
 }
 
+/* Awan SVG mengikuti ukuran wadahnya yang sudah dikunci (130px) */
 .awan {
-    position: absolute; bottom: 0; left: 0;
-    width: 100%; height: 100%; /* Akan mengikuti 120px dari wadahnya */
-    transform-origin: bottom center;
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; /* Klik tembus */
 }
 
+/* Animasi sebar awan */
 .awan-tengah, .awan-tengah-sd { z-index: 53; fill: #125438; animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 .awan-kiri, .awan-kiri-sd, .awan-belakang { z-index: 51; fill: #082b1c; opacity: 0; animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
 .awan-kanan, .awan-kanan-sd, .awan-depan { z-index: 52; fill: #0a3623; opacity: 0; animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
 
 @keyframes sebarTengah { 0% { transform: scale(0.2) translateY(50px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
-@keyframes sebarKiri { 0% { transform: translateX(20%) scale(0.2); opacity: 0; } 100% { transform: translateX(-5%) scale(1); opacity: 1; } }
-@keyframes sebarKanan { 0% { transform: translateX(-20%) scale(0.2); opacity: 0; } 100% { transform: translateX(5%) scale(1); opacity: 1; } }
+@keyframes sebarKiri { 0% { transform: translateX(20%) scale(0.2); opacity: 0; } 100% { transform: translateX(-15%) scale(1); opacity: 1; } }
+@keyframes sebarKanan { 0% { transform: translateX(-20%) scale(0.2); opacity: 0; } 100% { transform: translateX(15%) scale(1); opacity: 1; } }
 
-/* 5. FORM INPUT & TOMBOL (Ditaruh menggantung di bawah awan) */
+/* 5. FORM INPUT & TOMBOL (Ditaruh tepat di bawah awan kecil) */
 .area-interaksi {
     position: absolute;
-    top: 90px; /* Ditaruh tepat di bawah awan kecil tadi */
+    top: 100px; /* Mendorong form ke bagian perut bawah awan */
     left: 50%; transform: translateX(-50%);
-    width: 90%; max-width: 450px;
+    width: 90%; max-width: 400px;
     z-index: 60; text-align: center;
     opacity: 0; animation: munculForm 1s ease forwards 1.2s; 
+    pointer-events: auto; /* Pastikan bisa diklik */
 }
 @keyframes munculForm { 0% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
 
@@ -183,6 +194,7 @@ html, body {
     border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.2s;
 }
 .btn-mewah:hover { transform: scale(1.05); }
+
 
 /* =======================================================================
    OVERLAY UCAPAN (AMPLOP & KOTAK UCAPAN)
@@ -246,22 +258,18 @@ html, body {
    PENYESUAIAN MOBILE (HP) 
    ======================================================================= */
 @media (max-width: 600px) {
-    .judul-container { top: 6vh; }
+    .judul-container { top: 8vh; }
     
-    /* Bulan turun */
-    .bulan { bottom: 45vh; width: 230px; height: 230px; }
+    /* Naikkan titik jangkar secara keseluruhan di HP agar tidak tertutup layar bawah */
+    .pembungkus-bawah { top: 40%; } 
     
-    /* Base naik agar form tidak mepet bawah */
-    .pembungkus-bawah { bottom: 15vh; }
+    /* Bulan mengikuti titik jangkar yang baru naik */
+    .bulan { top: 40%; transform: translate(-50%, -70%); width: 220px; height: 220px; }
+    @keyframes bulanNaik { 0% { transform: translate(-50%, 50px); opacity: 0; } 100% { transform: translate(-50%, -70%); opacity: 1; } }
     
-    /* Masjid ukurannya pas memotong bulan */
-    .masjid { bottom: 70px; width: 90%; max-height: 25vh; }
-    
-    /* AWAN TETAP KECIL, melebar ke samping layar */
-    .wadah-awan-interaksi { height: 100px; width: 150vw; } 
-    
-    /* Form input & tombol ditarik pas di perut awan */
-    .area-interaksi { top: 70px; width: 85vw; } 
+    /* Pastikan awan dan interaksi tetap terikat kuat */
+    .wadah-awan-interaksi { width: clamp(340px, 120%, 500px); }
+    .area-interaksi { top: 90px; width: 95%; } 
     
     #nama-input { font-size: 1rem; padding: 10px; }
     .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
