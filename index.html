@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Ucapan Idul Fitri interaktif</title>
+    <!-- Pastikan link ke file CSS ini benar -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,54 +36,70 @@
                 <path d="M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
             </svg>
 
-            <h1 class="teks-selamat font-merriweather">Selamat Hari Raya Idul Fitri 1447 H</h1>
-            
-            <div class="input-container font-cormorant flex-center-column">
-                <input type="text" id="nama-input" placeholder="Masukkan Namamu Disini..." required>
-                <p class="input-alert hide">Namamu diperlukan</p>
+            <!-- Bulan Besar -->
+            <div class="bulan"></div>
+
+            <div class="konten-tengah-awal flex-center-column">
+                <h1 class="teks-selamat font-merriweather">Selamat Hari Raya Idul Fitri 1447 H</h1>
+                
+                <div class="input-container font-cormorant flex-center-column">
+                    <input type="text" id="nama-input" placeholder="Masukkan Namamu Disini..." required>
+                    <p class="input-alert hide">Namamu diperlukan</p>
+                </div>
+                
+                <button id="tombol-buka" class="tombol-mewah font-dancing">Buka Ucapan Mewah</button>
             </div>
             
-            <button id="tombol-buka" class="tombol-mewah font-dancing">Buka Ucapan Mewah</button>
-            
-            <div class="masjid-container">
-                <svg class="masjid-jaring-svg" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 200 120 C 200 60, 250 10, 250 10 C 250 10, 300 60, 300 120 Z" />
-                    <rect x="200" y="120" width="100" height="130" />
-                    <path d="M 245 15 C 238 22, 238 32, 245 39 C 252 32, 252 22, 245 15 Z" fill="#FFD700" />
-                    
-                    <rect x="170" y="50" width="20" height="200" />
-                    <path d="M 165 50 C 165 40, 180 30, 180 30 Q 195 40 195 50 Z" fill="#FFD700" />
-                    
-                    <rect x="310" y="50" width="20" height="200" />
-                    <path d="M 305 50 C 305 40, 320 30, 320 30 Q 335 40 335 50 Z" fill="#FFD700" />
+            <div class="dekorasi-bawah">
+                <div class="masjid-container">
+                    <svg class="masjid-jaring-svg" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+                        <!-- Kubah Tengah -->
+                        <path d="M 200 120 C 200 60, 250 10, 250 10 C 250 10, 300 60, 300 120 Z" />
+                        <rect x="200" y="120" width="100" height="130" />
+                        <!-- Bintang Kubah Tengah -->
+                        <path d="M 245 15 C 238 22, 238 32, 245 39 C 252 32, 252 22, 245 15 Z" fill="#FFD700" />
+                        
+                        <!-- Tiang Kiri Dalam -->
+                        <rect x="170" y="50" width="20" height="200" />
+                        <path d="M 165 50 C 165 40, 180 30, 180 30 Q 195 40 195 50 Z" fill="#FFD700" />
+                        
+                        <!-- Tiang Kanan Dalam -->
+                        <rect x="310" y="50" width="20" height="200" />
+                        <path d="M 305 50 C 305 40, 320 30, 320 30 Q 335 40 335 50 Z" fill="#FFD700" />
 
-                    <path d="M 130 160 C 130 130, 160 100, 160 100 C 160 100, 190 130, 190 160 Z" />
-                    <rect x="130" y="160" width="60" height="90" />
-                    
-                    <path d="M 310 160 C 310 130, 340 100, 340 100 C 340 100, 370 130, 370 160 Z" />
-                    <rect x="310" y="160" width="60" height="90" />
-                    
-                    <rect x="60" y="100" width="20" height="150" />
-                    <polygon points="55,100 85,100 70,70" fill="#FFD700"/>
+                        <!-- Kubah Kiri -->
+                        <path d="M 130 160 C 130 130, 160 100, 160 100 C 160 100, 190 130, 190 160 Z" />
+                        <rect x="130" y="160" width="60" height="90" />
+                        
+                        <!-- Kubah Kanan -->
+                        <path d="M 310 160 C 310 130, 340 100, 340 100 C 340 100, 370 130, 370 160 Z" />
+                        <rect x="310" y="160" width="60" height="90" />
+                        
+                        <!-- Tiang Kiri Luar -->
+                        <rect x="60" y="100" width="20" height="150" />
+                        <polygon points="55,100 85,100 70,70" fill="#FFD700"/>
 
-                    <rect x="420" y="100" width="20" height="150" />
-                    <polygon points="415,100 445,100 430,70" fill="#FFD700"/>
+                        <!-- Tiang Kanan Luar -->
+                        <rect x="420" y="100" width="20" height="150" />
+                        <polygon points="415,100 445,100 430,70" fill="#FFD700"/>
 
-                    <path d="M 230 180 Q 230 160 250 160 Q 270 160 270 180 L 270 200 L 230 200 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
-                    <path d="M 140 190 Q 140 180 150 180 Q 160 180 160 190 L 160 210 L 140 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
-                    <path d="M 340 190 Q 340 180 350 180 Q 360 180 360 190 L 360 210 L 340 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
-                </svg>
-            </div>
-            
-            <div id="awan-belakang-container" class="awan-container">
-                <svg class="awan awan-belakang awan-belakang-1" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg"><path d="M0 60 Q 40 50, 80 60 T 160 60 T 200 60 Q 180 30, 160 10 T 120 20 T 80 0 T 40 10 T 0 30 Z" /></svg>
-                <svg class="awan awan-belakang awan-belakang-2" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg"><path d="M0 60 Q 30 55, 60 60 T 120 60 T 180 60 T 200 60 Q 190 35, 170 15 T 130 25 T 90 5 T 50 15 T 0 35 Z" /></svg>
-            </div>
-            <div id="awan-depan-container" class="awan-container">
-                <svg class="awan awan-depan awan-depan-1" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><path d="M0 80 Q 50 60, 100 80 T 200 80 Q 180 40, 160 10 T 120 30 T 80 0 T 40 20 T 0 40 Z" /></svg>
-                <svg class="awan awan-depan awan-depan-2" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><path d="M0 80 Q 40 65, 80 80 T 160 80 T 200 80 Q 190 45, 170 15 T 130 35 T 90 5 T 50 25 T 0 45 Z" /></svg>
-                <svg class="awan awan-depan awan-depan-3" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><path d="M0 80 Q 60 55, 120 80 T 200 80 Q 185 35, 165 5 T 125 25 T 85 -5 T 45 15 T 0 35 Z" /></svg>
-                <svg class="awan awan-depan awan-depan-4" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg"><path d="M0 80 Q 35 60, 70 80 T 140 80 T 200 80 Q 195 40, 175 10 T 135 30 T 95 0 T 55 20 T 0 40 Z" /></svg>
+                        <!-- Pintu -->
+                        <path d="M 230 180 Q 230 160 250 160 Q 270 160 270 180 L 270 200 L 230 200 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+                        <path d="M 140 190 Q 140 180 150 180 Q 160 180 160 190 L 160 210 L 140 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+                        <path d="M 340 190 Q 340 180 350 180 Q 360 180 360 190 L 360 210 L 340 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                
+                <div id="awan-belakang-container" class="awan-container">
+                    <svg class="awan awan-belakang awan-belakang-1" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 60 Q 40 50, 80 60 T 160 60 T 200 60 Q 180 30, 160 10 T 120 20 T 80 0 T 40 10 T 0 30 Z" /></svg>
+                    <svg class="awan awan-belakang awan-belakang-2" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 60 Q 30 55, 60 60 T 120 60 T 180 60 T 200 60 Q 190 35, 170 15 T 130 25 T 90 5 T 50 15 T 0 35 Z" /></svg>
+                </div>
+                <div id="awan-depan-container" class="awan-container">
+                    <svg class="awan awan-depan awan-depan-1" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 80 Q 50 60, 100 80 T 200 80 Q 180 40, 160 10 T 120 30 T 80 0 T 40 20 T 0 40 Z" /></svg>
+                    <svg class="awan awan-depan awan-depan-2" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 80 Q 40 65, 80 80 T 160 80 T 200 80 Q 190 45, 170 15 T 130 35 T 90 5 T 50 25 T 0 45 Z" /></svg>
+                    <svg class="awan awan-depan awan-depan-3" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 80 Q 60 55, 120 80 T 200 80 Q 185 35, 165 5 T 125 25 T 85 -5 T 45 15 T 0 35 Z" /></svg>
+                    <svg class="awan awan-depan awan-depan-4" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0 80 Q 35 60, 70 80 T 140 80 T 200 80 Q 195 40, 175 10 T 135 30 T 95 0 T 55 20 T 0 40 Z" /></svg>
+                </div>
             </div>
         </section>
 
@@ -91,7 +108,7 @@
             <div id="amplop-container" class="amplop-container flex-center-column hide">
                 <div id="amplop-kiri" class="amplop-panel amplop-kiri"></div>
                 <div id="amplop-kanan" class="amplop-panel amplop-kanan"></div>
-                <button id="segel-lilin" class="segel-lilin flex-center-column">Buka</button>
+                <button id="segel-lilin" class="segel-lilin flex-center-column font-dancing">Buka</button>
             </div>
 
             <div id="konten-ucapan-container" class="konten-ucapan-container flex-center-column hide">
@@ -128,6 +145,7 @@
         </section>
     </div>
 
+    <!-- Pastikan link ke file JS ini benar -->
     <script src="script.js"></script>
 </body>
 </html>
