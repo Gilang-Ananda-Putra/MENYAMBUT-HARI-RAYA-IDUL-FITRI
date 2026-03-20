@@ -1,84 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('loader');
-    const nameModal = document.getElementById('name-modal');
-    const startBtn = document.getElementById('start-btn');
-    const userNameInput = document.getElementById('user-name-input');
-    const greetingTo = document.getElementById('greeting-to');
-    const mainContent = document.getElementById('main-content');
-    const audioBtn = document.getElementById('audio-btn');
-    const bgMusic = document.getElementById('bg-music');
-    const surpriseBtn = document.getElementById('surprise-btn');
-    const heroSection = document.getElementById('hero');
-    const surpriseSection = document.getElementById('surprise-section');
-    const randomQuote = document.getElementById('random-quote');
-    const starsContainer = document.getElementById('stars-container');
+    // Ambil elemen
+    const sectionAwal = document.getElementById('section-awal');
+    const sectionUcapan = document.getElementById('section-ucapan');
+    const namaInput = document.getElementById('nama-input');
+    const inputAlert = document.querySelector('.input-alert');
+    const tombolBuka = document.getElementById('tombol-buka');
+    const amplopContainer = document.getElementById('amplop-container');
+    const segelLilin = document.getElementById('segel-lilin');
+    const kontenUcapanContainer = document.getElementById('konten-ucapan-container');
+    const namaPenerima = document.getElementById('nama-penerima');
+    const konfetiContainer = document.getElementById('konfeti-container');
 
-    // --- 1. Generate Static Stars ---
-    for (let i = 0; i < 150; i++) {
-        let star = document.createElement('div');
-        star.classList.add('star');
-        star.style.width = `${Math.random() * 2}px`;
-        star.style.height = star.style.width;
-        star.style.left = `${Math.random() * 100}vw`;
-        star.style.top = `${Math.random() * 100}vh`;
-        star.style.animationDuration = `${Math.random() * 3 + 1}s`;
-        starsContainer.appendChild(star);
-    }
+    // === Fungsi Halaman Awal ke Amplop ===
+    tombolBuka.addEventListener('click', () => {
+        const namaUser = namaInput.value.trim();
 
-    // --- 2. Animasi Bintang Jatuh (NEW) ---
-    function triggerShootingStar() {
-        const star = document.createElement('div');
-        star.classList.add('shooting-star');
-        star.style.left = `${Math.random() * 80 + 10}vw`;
-        star.style.top = `${Math.random() * 50 + 10}vh`;
-        starsContainer.appendChild(star);
-
-        // Hapus elemen setelah animasi selesai
-        setTimeout(() => star.remove(), 1500);
-    }
-    // Jalankan setiap 4 detik
-    setInterval(triggerShootingStar, 4000);
-
-    // --- 3. Loading & Start Logic ---
-    setTimeout(() => {
-        loader.style.opacity = '0';
-        setTimeout(() => loader.style.display = 'none', 1000);
-    }, 2500);
-
-    startBtn.addEventListener('click', () => {
-        const name = userNameInput.value.trim() || "Sahabat";
-        greetingTo.innerText = `Untuk: ${name}`;
-        nameModal.classList.remove('active');
-        mainContent.classList.remove('hidden');
-
-        bgMusic.play().catch(() => console.log("Audio blocked"));
-        
-        // GSAP Entrance
-        gsap.from(".fade-in", { duration: 1.5, opacity: 0, y: 20, stagger: 0.3 });
-        gsap.from(".slide-up", { duration: 1.5, opacity: 0, y: 50, ease: "back.out" });
-    });
-
-    // --- 4. Surprise Logic (Ketupat Jatuh) ---
-    surpriseBtn.addEventListener('click', () => {
-        surpriseSection.classList.remove('hidden');
-        
-        // Buat ketupat jatuh (Visual Code)
-        for (let i = 0; i < 20; i++) {
-            const ketupat = document.createElement('div');
-            ketupat.classList.add('ketupat');
-            ketupat.style.left = `${Math.random() * 100}vw`;
-            ketupat.style.top = `-50px`;
-            mainContent.appendChild(ketupat);
-
-            gsap.to(ketupat, {
-                duration: 2 + Math.random() * 2,
-                top: "120vh",
-                opacity: 1,
-                rotation: Math.random() * 360,
-                ease: "power1.inOut",
-                delay: Math.random() * 1,
-                onComplete: () => ketupat.remove()
-            });
+        // Validasi nama
+        if (namaUser === "") {
+            inputAlert.classList.remove('hide');
+            namaInput.focus();
+            return;
         }
+        
+        // Simpan nama
+        inputAlert.classList.add('hide');
+        namaPenerima.innerText = `[${namaUser}]`; // Set nama di ucapan
+
+        // Animasi transisi
+        sectionAwal.classList.remove('active');
+        sectionAwal.classList.add('hide');
+        sectionUcapan.classList.remove('hide');
+        sectionUcapan.classList.add('active', 'show-amplop');
+        amplopContainer.classList.remove('hide'); // Pastikan terlihat
     });
+
+    // === Fungsi Buka Segel Amplop ke Ucapan ===
+    segelLilin.addEventListener('click', () => {
+        // Hapus segel
+        segelLilin.parentNode.classList.add('open');
+
+        // Tunggu animasi amplop terbuka, lalu tunjukkan ucapan dan konfeti
+        setTimeout(() => {
+            amplopContainer.classList.add('hide'); // Sembunyikan amplop
+            sectionUcapan.classList.remove('show-amplop');
+            sectionUcapan.classList.add('show-ucapan');
+            kontenUcapanContainer.classList.remove('hide'); // Pastikan terlihat
+            
+            // Jalankan konfeti
+            mulaKonfeti(40); // Jumlah konfeti
+        }, 1500); // Sinkronisasi dengan durasi animasi amplop buka ke samping
+    });
+
+    // === Fungsi Konfeti (Semburan Kertas Warna-Warni) ===
+    function mulaKonfeti(jumlah) {
+        const colors = ['#FFD700', '#FFE066', '#ff4d4d', '#1a523c', '#FF5F5F', '#5F5FFF'];
+        konfetiContainer.innerHTML = ''; // Reset wadah
+
+        for (let i = 0; i < jumlah; i++) {
+            const konfeti = document.createElement('div');
+            konfeti.classList.add('konfeti');
+            konfeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Posisi acak di atas layar
+            konfeti.style.left = Math.random() * 100 + 'vw';
+            
+            // Animasi jatuh acak
+            konfeti.style.animationDelay = Math.random() * 1.5 + 's';
+            konfeti.style.animationDuration = Math.random() * 1.5 + 2 + 's'; // Durasi berbeda
+            
+            // Ukuran acak
+            const size = Math.random() * 5 + 6 + 'px';
+            konfeti.style.width = size;
+            konfeti.style.height = size;
+            
+            konfetiContainer.appendChild(konfeti);
+        }
+    }
 });
