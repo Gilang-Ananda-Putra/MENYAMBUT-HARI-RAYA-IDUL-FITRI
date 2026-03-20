@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak - Premium Digital Greeting</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="crescent-loader"></div>
+        <p>Menyiapkan kejutan Idul Fitri untukmu...</p>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="stars" id="stars-container"></div>
+    <div class="moon">🌙</div>
+    
+    <div class="lantern left">🏮</div>
+    <div class="lantern right">🏮</div>
+
+    <!-- Audio Control -->
+    <button id="audio-btn" class="glow-hover">🔈 Putar Musik</button>
+    <!-- Ganti 'audio.mp3' dengan file musik Anda -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Name Input Modal (Nilai Plus) -->
+    <div id="name-modal" class="modal active">
+        <div class="modal-content glass">
+            <h2>Siapa namamu?</h2>
+            <input type="text" id="user-name-input" placeholder="Masukkan nama..." autocomplete="off">
+            <button id="start-btn" class="btn primary-btn">Mulai Perayaan ✨</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="hidden">
+        
+        <!-- Hero Section -->
+        <section id="hero">
+            <h3 class="fade-in" id="greeting-to">Untuk: Teman</h3>
+            <h1 class="slide-up">Selamat Hari Raya<br><span class="gold-text">Idul Fitri</span></h1>
+            <p class="fade-in typing-text">1 Syawal 1447 H • Mohon Maaf Lahir dan Batin</p>
+            
+            <button id="surprise-btn" class="btn gold-btn glow-hover">Klik untuk Kejutan 🎁</button>
+        </section>
+
+        <!-- Surprise Card Section -->
+        <section id="surprise-section" class="hidden">
+            <div class="card glass">
+                <div class="ketupat-container" id="ketupat-drop"></div>
+                <h2 class="gold-text">Pesan Spesial Untukmu</h2>
+                <p id="random-quote">"Semoga Allah menerima amal ibadah kita dan menjadikan kita kembali dalam keadaan suci."</p>
+                <div class="card-footer">
+                    <p>Salam hangat,</p>
+                    <p class="sender-name">Keluarga Besar El</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
