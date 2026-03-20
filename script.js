@@ -27,10 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alertNama.classList.add('hide');
         namaTujuan.innerText = nama; // Menulis nama yang diinput
 
-        // Ganti Layar
-        sectionAwal.classList.remove('active');
-        sectionAwal.classList.add('hide');
-        
+        // BUKA OVERLAY UCAPAN (Section awal TIDAK DI HIDE agar terlihat transparan di belakangnya)
         sectionUcapan.classList.remove('hide');
     });
 
@@ -44,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             amplop.classList.add('hide');
             kotakUcapan.classList.remove('hide');
             
-            // Trigger class .muncul untuk animasi teks & ketupat samping
-            sectionUcapan.classList.add('muncul');
+            // Trigger class .muncul-teks untuk animasi teks & ketupat samping
+            kotakUcapan.classList.add('muncul-teks');
             
             // Jalankan tembakan kertas
             buatKonfeti(70);
