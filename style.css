@@ -164,40 +164,47 @@ html, body {
     color: #FFD700;
 }
 
-/* === PEMBUNGKUS BAWAH === */
+/* === PEMBUNGKUS BAWAH (Menyatukan Masjid dan Awan) === */
 .pembungkus-bawah {
-    position: absolute; bottom: 0; left: 0;
-    width: 100%; height: 50vh;
+    position: absolute; 
+    /* Kunci posisi berdasarkan TENGAH BULAN */
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -20%); /* Sesuaikan nilai Y (-20%) untuk menaik/turunkan KESELURUHAN SET masjid+awan */
+    width: clamp(300px, 90%, 800px); /* Lebar dikunci di sini */
+    height: 300px; /* Base height untuk acuan awan */
     pointer-events: none;
+    z-index: 40;
 }
 
-/* Masjid di Tengah Layar Bawah */
+/* Masjid sekarang mengikuti pembungkusnya */
 .masjid {
     position: absolute;
-    bottom: 40%; /* Naik, menimpa tengah bulan */
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(300px, 90%, 800px); 
+    bottom: 0; /* Menempel di batas bawah pembungkus */
+    left: 0;
+    width: 100%; 
     height: auto; 
-    max-height: 70%; 
     fill: #01120a;
-    z-index: 40;
 }
 
 /* Wadah Awan dan Interaksi */
 .wadah-awan-interaksi {
     position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 45%; /* Awan naik mengikuti masjid */
+    /* Tempelkan bagian atas awan tepat di batas bawah masjid */
+    top: 90%; 
+    left: 50%; transform: translateX(-50%);
+    width: 100%; /* Atau buat lebih lebar 120vw agar awan meluber ke samping */
+    min-width: 800px; /* Minimal selebar masjid PC */
+    height: 40vh; /* Pastikan awan cukup panjang ke bawah untuk menutup layar */
     pointer-events: auto; 
     z-index: 50;
 }
 
 /* Awan Bulat "Anak SD" (Animasi Menyebar) */
 .awan {
-    position: absolute; bottom: 0; left: 0;
+    position: absolute; top: 0; left: 0; /* Mulai dari atas wadahnya */
     width: 100%; height: 100%;
-    transform-origin: bottom center;
+    transform-origin: top center; /* Animasi menyebar dari atas ke bawah */
 }
 
 /* Logika Animasi Awan */
@@ -221,12 +228,18 @@ html, body {
 /* Form Input & Tombol Diletakkan PAS di atas Awan Tengah */
 .area-interaksi {
     position: absolute;
-    top: 40%; /* Naik dari dasar layar */
-    left: 50%; transform: translate(-50%, -50%);
+    /* Turunkan relatif terhadap AWAN (karena sekarang di dalam wadah awan) */
+    top: 50px; 
+    left: 50%; transform: translateX(-50%);
     width: 90%; max-width: 450px;
     z-index: 60; text-align: center;
     opacity: 0;
     animation: munculForm 1s ease forwards 1.2s; 
+}
+
+@keyframes munculForm {
+    0% { opacity: 0; transform: translate(-50%, 20px); }
+    100% { opacity: 1; transform: translate(-50%, 0); }
 }
 
 @keyframes munculForm {
@@ -339,12 +352,22 @@ html, body {
     .judul-container { top: 8%; }
     .judul { font-size: 1.8rem; }
     
-    .bulan { bottom: auto; top: 15%; width: 220px; height: 220px; }
-    .pembungkus-bawah { height: 60vh; }
-    .masjid { bottom: 42%; width: 95%; max-height: 55%; }
+    /* Bulan sedikit diturunkan dari atas */
+    .bulan { top: 22%; bottom: auto; width: 250px; height: 250px; }
     
-    .wadah-awan-interaksi { height: 45%; }
-    .area-interaksi { top: 35%; width: 95%; } 
+    /* Pembungkus Masjid & Awan dinaikkan agar memotong tengah bulan */
+    .pembungkus-bawah { 
+        top: 45%; 
+        transform: translate(-50%, -10%); /* Sesuaikan jika kurang naik/turun */
+        width: 120vw; /* Sedikit melebar agar awan menutupi pinggir */
+    } 
+
+    .masjid { width: 90%; left: 5%; } /* Menjaga masjid tetap proporsional meski pembungkusnya 120vw */
+
+    /* Awan menutupi area bawah */
+    .wadah-awan-interaksi { height: 60vh; width: 100vw; left: 50%; transform: translateX(-50%);}
+    
+    .area-interaksi { top: 60px; width: 95%; } 
     
     #nama-input { font-size: 1rem; padding: 10px; }
     .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
