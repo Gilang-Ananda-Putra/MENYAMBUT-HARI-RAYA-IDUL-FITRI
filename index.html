@@ -2,52 +2,47 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Selamat Hari Raya Idul Fitri</title>
-    <!-- Link Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Dancing+Script:wght@700&family=Merriweather:wght@300;700&display=swap" rel="stylesheet">
-    <!-- Link CSS Terpisah -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- ================= SECTION 1: HALAMAN AWAL ================= -->
-    <section id="section-awal" class="layar-awal">
+    <section id="section-awal" class="layar-awal active">
         
-        <!-- Bintang Kelap Kelip Statis -->
-        <!-- Shooting Stars (Bintang Jatuh) -->
-        <div class="shooting-stars">
-            <div class="shooting-star"></div>
-            <div class="shooting-star"></div>
-            <div class="shooting-star"></div>
-            <div class="shooting-star"></div>
+        <!-- Bintang Kelap Kelip Statis & Nebula -->
+        <div id="langit-bintang">
+            <div class="bintang-statis bs-1"></div><div class="bintang-statis bs-2"></div>
+            <div class="bintang-statis bs-3"></div><div class="bintang-statis bs-4"></div>
+            <div class="bintang-statis bs-5"></div><div class="bintang-statis bs-6"></div>
+            <div class="bintang-statis bs-7"></div><div class="bintang-statis bs-8"></div>
         </div>
 
-        <div class="bulan"></div>
-        
-        <!-- 4 Ketupat (2 Luar Besar & Agak ke bawah, 2 Dalam Kecil & Agak ke atas) -->
+        <!-- Bintang Jatuh -->
+        <div class="shooting-stars">
+            <div class="shooting-star"></div><div class="shooting-star"></div>
+            <div class="shooting-star"></div><div class="shooting-star"></div>
+        </div>
+
+        <!-- 4 Ketupat -->
         <svg class="ketupat ketupat-luar-kiri" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
             <defs><pattern id="jk1" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M 0 5 L 10 5 M 5 0 L 5 10" stroke="#FFD700" stroke-width="1"/></pattern></defs>
             <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="#FFE066" stroke="#FFD700" stroke-width="2"/>
             <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk1)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
         </svg>
-
         <svg class="ketupat ketupat-dalam-kiri" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="jk2" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M 0 5 L 10 5 M 5 0 L 5 10" stroke="#FFD700" stroke-width="1"/></pattern></defs>
             <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="#FFE066" stroke="#FFD700" stroke-width="2"/>
-            <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk2)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
+            <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk1)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
         </svg>
-
         <svg class="ketupat ketupat-dalam-kanan" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="jk3" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M 0 5 L 10 5 M 5 0 L 5 10" stroke="#FFD700" stroke-width="1"/></pattern></defs>
             <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="#FFE066" stroke="#FFD700" stroke-width="2"/>
-            <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk3)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
+            <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk1)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
         </svg>
-
         <svg class="ketupat ketupat-luar-kanan" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-            <defs><pattern id="jk4" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M 0 5 L 10 5 M 5 0 L 5 10" stroke="#FFD700" stroke-width="1"/></pattern></defs>
             <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="#FFE066" stroke="#FFD700" stroke-width="2"/>
-            <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk4)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
+            <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk1)"/><path d="M 50 90 Q 40 120 30 140 M 50 90 Q 60 120 70 140" fill="none" stroke="#FFD700" stroke-width="2"/>
         </svg>
 
         <!-- Judul -->
@@ -55,60 +50,53 @@
             <h1 class="judul font-merriweather">Selamat Hari Raya Idul Fitri 1447 H</h1>
         </div>
 
-        <!-- Wadah Kokoh Pembungkus Masjid & Awan (Anti-Error Mobile) -->
-        <div class="pembungkus-bawah">
-            
-            <!-- Masjid Tengah & Besar -->
-            <svg class="masjid" preserveAspectRatio="xMidYMax meet" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 200 120 C 200 60, 250 10, 250 10 C 250 10, 300 60, 300 120 Z" />
-                <rect x="200" y="120" width="100" height="130" />
-                <path d="M 245 15 C 238 22, 238 32, 245 39 C 252 32, 252 22, 245 15 Z" fill="#FFD700" />
-                <rect x="170" y="50" width="20" height="200" />
-                <path d="M 165 50 C 165 40, 180 30, 180 30 Q 195 40 195 50 Z" fill="#FFD700" />
-                <rect x="310" y="50" width="20" height="200" />
-                <path d="M 305 50 C 305 40, 320 30, 320 30 Q 335 40 335 50 Z" fill="#FFD700" />
-                <path d="M 130 160 C 130 130, 160 100, 160 100 C 160 100, 190 130, 190 160 Z" />
-                <rect x="130" y="160" width="60" height="90" />
-                <path d="M 310 160 C 310 130, 340 100, 340 100 C 340 100, 370 130, 370 160 Z" />
-                <rect x="310" y="160" width="60" height="90" />
-                <rect x="60" y="100" width="20" height="150" />
-                <polygon points="55,100 85,100 70,70" fill="#FFD700"/>
-                <rect x="420" y="100" width="20" height="150" />
-                <polygon points="415,100 445,100 430,70" fill="#FFD700"/>
-                <path d="M 230 180 Q 230 160 250 160 Q 270 160 270 180 L 270 200 L 230 200 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
-                <path d="M 140 190 Q 140 180 150 180 Q 160 180 160 190 L 160 210 L 140 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
-                <path d="M 340 190 Q 340 180 350 180 Q 360 180 360 190 L 360 210 L 340 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+        <!-- BULAN & MASJID -->
+        <div class="bulan"></div>
+        
+        <svg class="masjid" preserveAspectRatio="xMidYMax meet" viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 200 120 C 200 60, 250 10, 250 10 C 250 10, 300 60, 300 120 Z" />
+            <rect x="200" y="120" width="100" height="130" />
+            <path d="M 245 15 C 238 22, 238 32, 245 39 C 252 32, 252 22, 245 15 Z" fill="#FFD700" />
+            <rect x="170" y="50" width="20" height="200" />
+            <path d="M 165 50 C 165 40, 180 30, 180 30 Q 195 40 195 50 Z" fill="#FFD700" />
+            <rect x="310" y="50" width="20" height="200" />
+            <path d="M 305 50 C 305 40, 320 30, 320 30 Q 335 40 335 50 Z" fill="#FFD700" />
+            <path d="M 130 160 C 130 130, 160 100, 160 100 C 160 100, 190 130, 190 160 Z" />
+            <rect x="130" y="160" width="60" height="90" />
+            <path d="M 310 160 C 310 130, 340 100, 340 100 C 340 100, 370 130, 370 160 Z" />
+            <rect x="310" y="160" width="60" height="90" />
+            <rect x="60" y="100" width="20" height="150" />
+            <polygon points="55,100 85,100 70,70" fill="#FFD700"/>
+            <rect x="420" y="100" width="20" height="150" />
+            <polygon points="415,100 445,100 430,70" fill="#FFD700"/>
+            <path d="M 230 180 Q 230 160 250 160 Q 270 160 270 180 L 270 200 L 230 200 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M 140 190 Q 140 180 150 180 Q 160 180 160 190 L 160 210 L 140 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+            <path d="M 340 190 Q 340 180 350 180 Q 360 180 360 190 L 360 210 L 340 210 Z" fill="#01120a" stroke="#FFD700" stroke-width="1.5"/>
+        </svg>
+
+        <!-- WADAH AWAN & FORM -->
+        <div class="wadah-awan-interaksi">
+            <!-- Awan 3 Lapis: preserveAspectRatio="none" menjaga agar lengkungan tidak terpotong -->
+            <svg class="awan awan-kiri" preserveAspectRatio="none" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+                <path d="M -50 250 L -50 150 C 50 150, 100 80, 200 100 C 280 20, 450 10, 550 80 C 650 40, 780 80, 850 160 L 850 250 Z" fill="#082b1c"/>
+            </svg>
+            <svg class="awan awan-kanan" preserveAspectRatio="none" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+                <path d="M -50 250 L -50 150 C 50 150, 100 80, 200 100 C 280 20, 450 10, 550 80 C 650 40, 780 80, 850 160 L 850 250 Z" fill="#0a3623"/>
+            </svg>
+            <svg class="awan awan-tengah" preserveAspectRatio="none" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
+                <path d="M -50 250 L -50 150 C 50 150, 100 80, 200 100 C 280 20, 450 10, 550 80 C 650 40, 780 80, 850 160 L 850 250 Z" fill="#125438"/>
             </svg>
 
-            <!-- Awan Anak SD (3 Lapis yang Menyebar) & Interaksi -->
-            <div class="wadah-awan-interaksi">
-                
-                <!-- Awan Kiri (Belakang) -->
-                <svg class="awan awan-kiri" preserveAspectRatio="xMidYMax slice" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M -50 250 L -50 150 C 50 150, 100 80, 200 100 C 280 20, 450 10, 550 80 C 650 40, 780 80, 850 160 L 850 250 Z" fill="#082b1c"/>
-                </svg>
-
-                <!-- Awan Kanan (Belakang) -->
-                <svg class="awan awan-kanan" preserveAspectRatio="xMidYMax slice" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M -50 250 L -50 150 C 50 150, 100 80, 200 100 C 280 20, 450 10, 550 80 C 650 40, 780 80, 850 160 L 850 250 Z" fill="#0a3623"/>
-                </svg>
-
-                <!-- Awan Tengah (Depan) -->
-                <svg class="awan awan-tengah" preserveAspectRatio="xMidYMax slice" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M -50 250 L -50 150 C 50 150, 100 80, 200 100 C 280 20, 450 10, 550 80 C 650 40, 780 80, 850 160 L 850 250 Z" fill="#125438"/>
-                </svg>
-
-                <!-- Input & Tombol di Dalam Awan Tengah -->
-                <div class="area-interaksi">
-                    <div class="input-grup">
-                        <input type="text" id="nama-input" class="font-cormorant" placeholder="Masukkan Namamu Disini...">
-                        <p id="alert-nama" class="alert hide">Mohon isi namamu terlebih dahulu</p>
-                    </div>
-                    <button id="tombol-buka" class="btn-mewah font-dancing">Buka Ucapan Mewah</button>
+            <!-- Form Interaksi -->
+            <div class="area-interaksi">
+                <div class="input-grup">
+                    <input type="text" id="nama-input" class="font-cormorant" placeholder="Masukkan Namamu Disini...">
+                    <p id="alert-nama" class="alert hide">Mohon isi namamu terlebih dahulu</p>
                 </div>
+                <button id="tombol-buka" class="btn-mewah font-dancing">Buka Ucapan Mewah</button>
             </div>
-            
         </div>
+
     </section>
 
     <!-- ================= SECTION 2: OVERLAY UCAPAN ================= -->
@@ -122,7 +110,6 @@
         </div>
 
         <div id="kotak-ucapan" class="kotak-ucapan hide">
-            <!-- Ketupat Samping Ucapan -->
             <svg class="ketupat-ucapan ketupat-ucapan-kiri" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
                 <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="#FFE066" stroke="#FFD700" stroke-width="2"/>
                 <path d="M 50 10 L 90 50 L 50 90 L 10 50 Z" fill="url(#jk1)"/>
