@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alertNama.classList.add('hide');
         namaTujuan.innerText = nama; // Menulis nama yang diinput
 
-        // BUKA OVERLAY UCAPAN (Section awal TIDAK DI HIDE agar terlihat transparan di belakangnya)
+        // BUKA OVERLAY UCAPAN 
+        // Section awal TIDAK DI HIDE agar background masjid terlihat transparan
         sectionUcapan.classList.remove('hide');
     });
 
@@ -44,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Trigger class .muncul-teks untuk animasi teks & ketupat samping
             kotakUcapan.classList.add('muncul-teks');
             
-            // Jalankan tembakan kertas
-            buatKonfeti(70);
+            // Jalankan tembakan kertas konfeti
+            buatKonfeti(80);
         }, 1500);
     });
 
