@@ -1,81 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Ambil elemen
+    // Definisi Elemen
     const sectionAwal = document.getElementById('section-awal');
     const sectionUcapan = document.getElementById('section-ucapan');
-    const namaInput = document.getElementById('nama-input');
-    const inputAlert = document.querySelector('.input-alert');
+    
+    const inputNama = document.getElementById('nama-input');
+    const alertNama = document.getElementById('alert-nama');
     const tombolBuka = document.getElementById('tombol-buka');
-    const amplopContainer = document.getElementById('amplop-container');
-    const segelLilin = document.getElementById('segel-lilin');
-    const kontenUcapanContainer = document.getElementById('konten-ucapan-container');
-    const namaPenerima = document.getElementById('nama-penerima');
+    const namaTujuan = document.getElementById('nama-tujuan');
+    
+    const amplop = document.getElementById('amplop');
+    const segel = document.getElementById('segel');
+    const kotakUcapan = document.getElementById('kotak-ucapan');
     const konfetiContainer = document.getElementById('konfeti-container');
 
-    // === Fungsi Halaman Awal ke Amplop ===
+    // --- LOGIKA KLIK TOMBOL AWAL ---
     tombolBuka.addEventListener('click', () => {
-        const namaUser = namaInput.value.trim();
+        const nama = inputNama.value.trim();
 
-        // Validasi nama
-        if (namaUser === "") {
-            inputAlert.classList.remove('hide');
-            namaInput.focus();
+        if (nama === "") {
+            alertNama.classList.remove('hide');
+            inputNama.focus();
             return;
         }
-        
-        // Simpan nama
-        inputAlert.classList.add('hide');
-        namaPenerima.innerText = namaUser; // Set nama di ucapan
 
-        // Animasi transisi
+        // Lanjut ke halaman ucapan
+        alertNama.classList.add('hide');
+        namaTujuan.innerText = nama; // Menulis nama yang diinput
+
+        // Ganti Layar
         sectionAwal.classList.remove('active');
         sectionAwal.classList.add('hide');
         
         sectionUcapan.classList.remove('hide');
-        sectionUcapan.classList.add('active', 'show-amplop');
-        amplopContainer.classList.remove('hide');
     });
 
-    // === Fungsi Buka Segel Amplop ke Ucapan ===
-    segelLilin.addEventListener('click', () => {
-        // Hapus segel dan mulai animasi buka
-        segelLilin.parentNode.classList.add('open');
+    // --- LOGIKA KLIK SEGEL LILIN ---
+    segel.addEventListener('click', () => {
+        // Trigger animasi buka amplop di CSS
+        amplop.classList.add('buka-amplop');
 
-        // Tunggu animasi amplop terbuka, lalu tunjukkan ucapan
+        // Tunggu 1.5 detik sampai amplop terbuka, lalu hilangkan amplop & munculkan teks
         setTimeout(() => {
-            amplopContainer.classList.add('hide'); 
-            sectionUcapan.classList.remove('show-amplop');
-            sectionUcapan.classList.add('show-ucapan');
-            kontenUcapanContainer.classList.remove('hide'); 
+            amplop.classList.add('hide');
+            kotakUcapan.classList.remove('hide');
             
-            // Jalankan konfeti
-            mulaKonfeti(60); // Jumlah konfeti diperbanyak sedikit
-        }, 1500); 
+            // Trigger class .muncul untuk animasi teks & ketupat samping
+            sectionUcapan.classList.add('muncul');
+            
+            // Jalankan tembakan kertas
+            buatKonfeti(70);
+        }, 1500);
     });
 
-    // === Fungsi Konfeti (Semburan Kertas Warna-Warni) ===
-    function mulaKonfeti(jumlah) {
-        const colors = ['#FFD700', '#FFE066', '#ff4d4d', '#33cc33', '#FF5F5F', '#5F5FFF', '#ffffff'];
+    // --- FUNGSI SEMBURAN KERTAS (KONFETI) ---
+    function buatKonfeti(jumlah) {
+        const warnaWarni = ['#FFD700', '#FFE066', '#ff4d4d', '#33cc33', '#33D1FF', '#FF33A8', '#ffffff'];
         konfetiContainer.innerHTML = ''; 
 
         for (let i = 0; i < jumlah; i++) {
-            const konfeti = document.createElement('div');
-            konfeti.classList.add('konfeti');
-            konfeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            const kertas = document.createElement('div');
+            kertas.classList.add('potongan-kertas');
             
-            // Posisi X acak
-            konfeti.style.left = Math.random() * 100 + 'vw';
+            // Warna acak
+            kertas.style.backgroundColor = warnaWarni[Math.floor(Math.random() * warnaWarni.length)];
             
-            // Animasi jatuh (delay dan durasi acak)
-            konfeti.style.animationDelay = Math.random() * 2 + 's';
-            konfeti.style.animationDuration = Math.random() * 2 + 2.5 + 's'; 
+            // Lebar jatuh acak dari kiri ke kanan (0vw - 100vw)
+            kertas.style.left = Math.random() * 100 + 'vw';
             
-            // Ukuran acak (persegi panjang untuk efek kertas)
-            const width = Math.random() * 8 + 5 + 'px';
-            const height = Math.random() * 15 + 10 + 'px';
-            konfeti.style.width = width;
-            konfeti.style.height = height;
+            // Delay dan durasi acak agar tidak jatuh bersamaan
+            kertas.style.animationDelay = Math.random() * 2 + 's';
+            kertas.style.animationDuration = Math.random() * 2 + 2.5 + 's'; 
             
-            konfetiContainer.appendChild(konfeti);
+            // Ukuran kertas (persegi / persegi panjang acak)
+            const lebar = Math.random() * 8 + 6 + 'px';
+            const tinggi = Math.random() * 15 + 10 + 'px';
+            kertas.style.width = lebar;
+            kertas.style.height = tinggi;
+            
+            konfetiContainer.appendChild(kertas);
         }
     }
 });
