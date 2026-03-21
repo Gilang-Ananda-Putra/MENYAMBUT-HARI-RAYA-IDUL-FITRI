@@ -50,52 +50,47 @@ html, body {
 @keyframes turunKetupat { 0% { transform: translateY(-100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 @keyframes goyangKetupat { 0% { transform: rotate(4deg); } 100% { transform: rotate(-4deg); } }
 
-
 /* =======================================================================
-   EFEK 3D SANDWICH BERDASARKAN Z-INDEX MURNI (Desktop View)
+   SETTING POSISI & Z-INDEX (AGAR EFEK SANDWICH BERJALAN)
    ======================================================================= */
 
-/* 1. BULAN (Paling Belakang - Z: 10) */
 .bulan {
-    position: absolute; top: 10vh; left: 50%; transform: translateX(-50%);
-    width: 40vh; height: 40vh; border-radius: 50%; z-index: 10;
-    background: radial-gradient(circle, #fffdda 0%, #f6e27b 100%);
-    box-shadow: 0 0 60px 20px rgba(246, 226, 123, 0.15); opacity: 0; animation: bulanNaik 1.5s ease-out forwards 0.5s;
+    position: absolute; left: 50%; transform: translateX(-50%);
+    border-radius: 50%; background: radial-gradient(circle, #fffdda 0%, #f6e27b 100%);
+    box-shadow: 0 0 60px 20px rgba(246, 226, 123, 0.15); opacity: 0;
+    z-index: 10; animation: bulanNaik 1.5s ease-out forwards 0.5s;
 }
 @keyframes bulanNaik { 0% { transform: translate(-50%, 50px); opacity: 0; } 100% { transform: translate(-50%, 0); opacity: 1; } }
 
-/* 2. AWAN GELAP KIRI & KANAN (Di Belakang Masjid - Z: 20) */
-.awan-kiri, .awan-kanan {
-    position: absolute; bottom: 0; left: 0; width: 100%; 
-    height: 55vh; /* Cukup tinggi untuk menutupi bagian bawah masjid */
-    z-index: 20; transform-origin: bottom center; pointer-events: none;
+/* Membuat awan LEBIH LEBAR DARI LAYAR (200vw) agar tidak gepeng/lancip ke atas! */
+.awan {
+    position: absolute;
+    left: -50vw; /* Menariknya ke kiri untuk memusatkan lebar 200vw */
+    width: 200vw; /* Kunci rahasia anti-lancip! */
+    transform-origin: bottom center; pointer-events: none;
 }
-.awan-kiri { fill: #082b1c; opacity: 0; animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
-.awan-kanan { fill: #0a3623; opacity: 0; animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
 
-/* 3. MASJID (Tengah - Z: 30) */
+/* AWAN GELAP (Belakang) */
+.awan-kiri { z-index: 20; fill: #082b1c; opacity: 0; animation: sebarKiri 1.5s ease-out forwards 0.2s; }
+.awan-kanan { z-index: 20; fill: #0a3623; opacity: 0; animation: sebarKanan 1.5s ease-out forwards 0.2s; }
+
+/* MASJID (Tengah) */
 .masjid {
-    position: absolute; bottom: 35vh; left: 50%; transform: translateX(-50%);
-    width: clamp(300px, 80%, 700px); height: auto; max-height: 40vh; 
+    position: absolute; left: 50%; transform: translateX(-50%);
     fill: #01120a; z-index: 30;
 }
 
-/* 4. AWAN CERAH (Depan Masjid - Z: 40) */
-.awan-tengah {
-    position: absolute; bottom: 0; left: 0; width: 100%; 
-    height: 45vh; /* Lebih pendek sedikit dari awan gelap agar efek 3D terlihat */
-    z-index: 40; transform-origin: bottom center; pointer-events: none;
-    fill: #125438; animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
+/* AWAN TERANG (Depan) */
+.awan-tengah { z-index: 40; fill: #125438; opacity: 0; animation: sebarTengah 1.5s ease-out forwards; }
 
-@keyframes sebarTengah { 0% { transform: scale(0.2) translateY(50px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
-@keyframes sebarKiri { 0% { transform: translateX(20%) scale(0.2); opacity: 0; } 100% { transform: translateX(-5%) scale(1); opacity: 1; } }
-@keyframes sebarKanan { 0% { transform: translateX(-20%) scale(0.2); opacity: 0; } 100% { transform: translateX(5%) scale(1); opacity: 1; } }
+@keyframes sebarTengah { 0% { transform: translateY(50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes sebarKiri { 0% { transform: translateX(5%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+@keyframes sebarKanan { 0% { transform: translateX(-5%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
 
-/* 5. AREA INTERAKSI FORM (Paling Depan - Z: 50) */
+/* FORM & TOMBOL */
 .area-interaksi {
-    position: absolute; bottom: 15vh; left: 50%; transform: translateX(-50%);
-    width: 90%; max-width: 450px; z-index: 50; text-align: center;
+    position: absolute; left: 50%; transform: translateX(-50%);
+    text-align: center; z-index: 50;
     opacity: 0; animation: munculForm 1s ease forwards 1.2s; 
 }
 @keyframes munculForm { 0% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
@@ -107,8 +102,64 @@ html, body {
 .btn-mewah { padding: 10px 35px; font-size: 1.4rem; color: #01120a; background: linear-gradient(135deg, #FFD700, #FFE066); border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.2s; }
 .btn-mewah:hover { transform: scale(1.05); }
 
+/* =======================================================================
+   PENYESUAIAN MOBILE VIEW
+   ======================================================================= */
+@media (max-width: 768px) {
+    .judul-container { top: 6vh; }
+    .bulan { bottom: 45vh; width: 220px; height: 220px; }
+    
+    /* Awan Gelap Belakang ditarik tinggi ke perut masjid */
+    .awan-kiri, .awan-kanan { bottom: 25vh; height: 40vh; } 
+    
+    /* Dasar Masjid ditarik turun agar termakan awan belakang */
+    .masjid { bottom: 20vh; width: 95%; max-height: 40vh; } 
+    
+    /* Awan Depan menelan sisa area paling bawah */
+    .awan-tengah { bottom: 0; height: 35vh; } 
+    
+    /* Area Form diletakkan pas di perut awan terang */
+    .area-interaksi { bottom: 10vh; width: 90%; } 
+    
+    #nama-input { font-size: 1rem; padding: 10px; }
+    .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
+}
 
 /* =======================================================================
+   PENYESUAIAN DESKTOP VIEW
+   ======================================================================= */
+@media (min-width: 769px) {
+    .bulan { bottom: 40vh; width: 35vh; height: 35vh; }
+    .awan-kiri, .awan-kanan { bottom: 12vh; height: 45vh; left: -25vw; width: 150vw; }
+    .masjid { bottom: 15vh; width: clamp(300px, 80%, 700px); max-height: 45vh; }
+    .awan-tengah { bottom: 0; height: 30vh; left: -25vw; width: 150vw; }
+    .area-interaksi { bottom: 10vh; width: 450px; }
+}
+
+/* =======================================================================
+   OVERLAY UCAPAN
+   ======================================================================= */
+.layar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 20, 14, 0.75); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 999; }
+.amplop { width: 90%; max-width: 600px; height: 60vh; min-height: 400px; position: absolute; z-index: 1001; perspective: 1000px; animation: amplopMuncul 1s ease-out forwards; }
+@keyframes amplopMuncul { 0% { transform: translateY(100vh); } 100% { transform: translateY(0); } }
+.panel-amplop { position: absolute; width: 50%; height: 100%; background: rgba(1, 18, 10, 0.85); backdrop-filter: blur(4px); border: 3px solid #FFD700; top: 0; transition: transform 1.5s ease-in-out; backface-visibility: hidden; }
+.panel-kiri { left: 0; border-right: none; transform-origin: left; border-radius: 10px 0 0 10px; } .panel-kanan { right: 0; border-left: none; transform-origin: right; border-radius: 0 10px 10px 0; }
+.panel-kiri::after, .panel-kanan::after { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(1, 18, 10, 0.85); top: 0; left: 0; z-index: -1; }
+.panel-kiri::after { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); } .panel-kanan::after { clip-path: polygon(100% 0%, 0% 50%, 100% 100%); }
+.buka-amplop .panel-kiri { transform: rotateY(-180deg); opacity: 0; } .buka-amplop .panel-kanan { transform: rotateY(180deg); opacity: 0; }
+.segel { width: 70px; height: 70px; background: #ff4d4d; border: 3px solid #FFD700; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #FFD700; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.6); transition: 0.3s; z-index: 1002; }
+.segel:hover { transform: translate(-50%, -50%) scale(1.1); } .buka-amplop .segel { opacity: 0; pointer-events: none; }
+.kotak-ucapan { width: 90%; max-width: 650px; padding: 50px 30px; background: rgba(6, 32, 22, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255, 215, 0, 0.5); border-radius: 15px; text-align: center; position: relative; z-index: 1000; opacity: 0; transform: scale(0.8); transition: 1s ease-out 0.5s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.muncul-teks { opacity: 1 !important; transform: scale(1) !important; }
+.kotak-ucapan h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: #FFD700; margin-bottom: 10px; } .kotak-ucapan h2 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 15px; color: #FFE066;} .kotak-ucapan h3 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 25px; display: inline-block; border-bottom: 2px solid #FFD700; padding-bottom: 5px; color: #FFD700;} .kotak-ucapan p { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.6; color: #FFE066;}
+.ketupat-ucapan { position: absolute; width: 50px; opacity: 0; }
+.ketupat-ucapan-kiri { top: -25px; left: -20px; transform: rotate(-20deg); } .ketupat-ucapan-kanan { bottom: -25px; right: -20px; transform: rotate(20deg); }
+.muncul-teks .ketupat-ucapan-kiri { animation: popKiri 0.8s ease-out forwards 1.2s; } .muncul-teks .ketupat-ucapan-kanan { animation: popKanan 0.8s ease-out forwards 1.2s; }
+.muncul-teks .ketupat-ucapan g { animation: goyangKetupat 3s ease-in-out infinite alternate 2s; transform-origin: top center; }
+@keyframes popKiri { 0% { transform: scale(0) rotate(-40deg); opacity: 0; } 100% { transform: scale(1) rotate(-20deg); opacity: 1; } } @keyframes popKanan { 0% { transform: scale(0) rotate(40deg); opacity: 0; } 100% { transform: scale(1) rotate(20deg); opacity: 1; } }
+#konfeti-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1003; overflow: hidden; }
+.potongan-kertas { position: absolute; opacity: 0; animation: jatuhKertas linear forwards; }
+@keyframes jatuhKertas { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
    OVERLAY UCAPAN
    ======================================================================= */
 .layar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 20, 14, 0.75); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 999; }
