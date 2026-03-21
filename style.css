@@ -1,9 +1,7 @@
 /* =======================================================================
    RESET & KUNCI SCROLL MUTLAK
    ======================================================================= */
-* {
-    margin: 0; padding: 0; box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
     width: 100vw; height: 100vh;
@@ -17,13 +15,9 @@ html, body {
         radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 3px);
     background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
     background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
-    font-family: Arial, sans-serif;
-    touch-action: none;
+    font-family: Arial, sans-serif; touch-action: none;
 }
-
 .hide { display: none !important; }
-
-/* === Font === */
 .font-merriweather { font-family: 'Merriweather', serif; font-weight: 700; }
 .font-merriweather-light { font-family: 'Merriweather', serif; font-weight: 300; }
 .font-cormorant { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
@@ -33,117 +27,75 @@ html, body {
 /* =======================================================================
    ANIMASI BINTANG & NEBULA
    ======================================================================= */
-#langit-bintang {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
-    background-image: 
-        radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
-    background-repeat: repeat; background-size: 200px 200px;
-    animation: zoomNebula 60s infinite linear alternate;
-}
+#langit-bintang { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)); background-repeat: repeat; background-size: 200px 200px; animation: zoomNebula 60s infinite linear alternate; }
 @keyframes zoomNebula { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-
 .bintang-statis { position: absolute; background: #fff; border-radius: 50%; animation: kelapKelip 3s infinite alternate; }
 @keyframes kelapKelip { 0% { opacity: 0.1; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 6px #fff; } }
-.bs-1 { top: 10%; left: 15%; width: 3px; height: 3px; animation-delay: 0s; }
-.bs-2 { top: 25%; left: 85%; width: 4px; height: 4px; animation-delay: 0.5s; }
-.bs-3 { top: 15%; left: 70%; width: 2px; height: 2px; animation-delay: 1.2s; }
-.bs-4 { top: 35%; left: 25%; width: 3px; height: 3px; animation-delay: 0.8s; }
-.bs-5 { top: 5%; left: 50%; width: 4px; height: 4px; animation-delay: 2s; }
-.bs-6 { top: 40%; left: 80%; width: 2px; height: 2px; animation-delay: 1.5s; }
-.bs-7 { top: 50%; left: 10%; width: 3px; height: 3px; animation-delay: 0.3s; }
-.bs-8 { top: 60%; left: 90%; width: 2px; height: 2px; animation-delay: 1.8s; }
-
+.bs-1 { top: 10%; left: 15%; width: 3px; height: 3px; animation-delay: 0s; } .bs-2 { top: 25%; left: 85%; width: 4px; height: 4px; animation-delay: 0.5s; } .bs-3 { top: 15%; left: 70%; width: 2px; height: 2px; animation-delay: 1.2s; } .bs-4 { top: 35%; left: 25%; width: 3px; height: 3px; animation-delay: 0.8s; } .bs-5 { top: 5%; left: 50%; width: 4px; height: 4px; animation-delay: 2s; } .bs-6 { top: 40%; left: 80%; width: 2px; height: 2px; animation-delay: 1.5s; } .bs-7 { top: 50%; left: 10%; width: 3px; height: 3px; animation-delay: 0.3s; } .bs-8 { top: 60%; left: 90%; width: 2px; height: 2px; animation-delay: 1.8s; }
 .shooting-stars { position: absolute; top: 0; left: 0; width: 100%; height: 60%; z-index: 0; pointer-events: none; }
 .shooting-star { position: absolute; width: 3px; height: 3px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8); opacity: 0; animation: shoot infinite linear; }
 .shooting-star::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 1px; background: linear-gradient(90deg, #fff, transparent); left: 100%; }
-.shooting-star:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; animation-duration: 3s; }
-.shooting-star:nth-child(2) { top: 30%; left: 60%; animation-delay: 1.2s; animation-duration: 4s; }
-.shooting-star:nth-child(3) { top: 5%; left: 40%; animation-delay: 2.5s; animation-duration: 3.5s; }
-.shooting-star:nth-child(4) { top: 20%; left: 90%; animation-delay: 0.7s; animation-duration: 4.2s; }
+.shooting-star:nth-child(1) { top: 10%; left: 80%; animation-delay: 0s; animation-duration: 3s; } .shooting-star:nth-child(2) { top: 30%; left: 60%; animation-delay: 1.2s; animation-duration: 4s; } .shooting-star:nth-child(3) { top: 5%; left: 40%; animation-delay: 2.5s; animation-duration: 3.5s; } .shooting-star:nth-child(4) { top: 20%; left: 90%; animation-delay: 0.7s; animation-duration: 4.2s; }
 @keyframes shoot { 0% { transform: translate(0, 0) rotate(-35deg); opacity: 1; } 10% { opacity: 1; } 100% { transform: translate(-400px, 400px) rotate(-35deg); opacity: 0; } }
 
 /* =======================================================================
    HALAMAN AWAL: JUDUL & KETUPAT
    ======================================================================= */
 .layar-awal { position: relative; width: 100%; height: 100%; }
-
 .judul-container { position: absolute; top: 10vh; width: 100%; text-align: center; z-index: 60; padding: 0 15px; }
 .judul { font-size: clamp(1.8rem, 5vw, 3.5rem); text-shadow: 0 5px 15px rgba(0,0,0,0.8); color: #FFD700; }
-
 .ketupat { position: absolute; opacity: 0; z-index: 50; animation: turunKetupat 1.5s ease-out forwards; }
-.ketupat-luar-kiri { left: 2%; top: 12%; width: clamp(60px, 10vw, 100px); animation-delay: 0.2s; }
-.ketupat-luar-kanan { right: 2%; top: 12%; width: clamp(60px, 10vw, 100px); animation-delay: 0.3s; }
-.ketupat-dalam-kiri { left: 16%; top: 3%; width: clamp(35px, 6vw, 60px); animation-delay: 0.5s; }
-.ketupat-dalam-kanan { right: 16%; top: 3%; width: clamp(35px, 6vw, 60px); animation-delay: 0.6s; }
+.ketupat-luar-kiri { left: 2%; top: 12%; width: clamp(60px, 10vw, 100px); animation-delay: 0.2s; } .ketupat-luar-kanan { right: 2%; top: 12%; width: clamp(60px, 10vw, 100px); animation-delay: 0.3s; } .ketupat-dalam-kiri { left: 16%; top: 3%; width: clamp(35px, 6vw, 60px); animation-delay: 0.5s; } .ketupat-dalam-kanan { right: 16%; top: 3%; width: clamp(35px, 6vw, 60px); animation-delay: 0.6s; }
 .ketupat g { animation: goyangKetupat 3s ease-in-out infinite alternate; transform-origin: top center; }
 @keyframes turunKetupat { 0% { transform: translateY(-100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 @keyframes goyangKetupat { 0% { transform: rotate(4deg); } 100% { transform: rotate(-4deg); } }
 
+
 /* =======================================================================
-   EFEK 3D SANDWICH (AWAN GELAP -> MASJID -> AWAN CERAH)
+   EFEK 3D SANDWICH BERDASARKAN Z-INDEX MURNI (Desktop View)
    ======================================================================= */
 
-/* 1. BULAN (Paling Belakang) */
+/* 1. BULAN (Paling Belakang - Z: 10) */
 .bulan {
-    position: absolute;
-    top: 10vh; 
-    left: 50%; transform: translateX(-50%);
-    width: 40vh; height: 40vh; 
+    position: absolute; top: 10vh; left: 50%; transform: translateX(-50%);
+    width: 40vh; height: 40vh; border-radius: 50%; z-index: 10;
     background: radial-gradient(circle, #fffdda 0%, #f6e27b 100%);
-    border-radius: 50%; box-shadow: 0 0 60px 20px rgba(246, 226, 123, 0.15);
-    z-index: 10; opacity: 0; animation: bulanNaik 1.5s ease-out forwards 0.5s;
+    box-shadow: 0 0 60px 20px rgba(246, 226, 123, 0.15); opacity: 0; animation: bulanNaik 1.5s ease-out forwards 0.5s;
 }
 @keyframes bulanNaik { 0% { transform: translate(-50%, 50px); opacity: 0; } 100% { transform: translate(-50%, 0); opacity: 1; } }
 
-/* 2. MASJID (Berada di Tengah, z-index: 40) */
+/* 2. AWAN GELAP KIRI & KANAN (Di Belakang Masjid - Z: 20) */
+.awan-kiri, .awan-kanan {
+    position: absolute; bottom: 0; left: 0; width: 100%; 
+    height: 55vh; /* Cukup tinggi untuk menutupi bagian bawah masjid */
+    z-index: 20; transform-origin: bottom center; pointer-events: none;
+}
+.awan-kiri { fill: #082b1c; opacity: 0; animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
+.awan-kanan { fill: #0a3623; opacity: 0; animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
+
+/* 3. MASJID (Tengah - Z: 30) */
 .masjid {
-    position: absolute;
-    bottom: 40vh; /* Posisinya diam di sini */
-    left: 50%; transform: translateX(-50%);
-    width: clamp(300px, 80%, 700px); 
-    height: auto; max-height: 40vh; 
-    fill: #01120a; 
-    z-index: 40; /* Z-INDEX MASJID */
+    position: absolute; bottom: 35vh; left: 50%; transform: translateX(-50%);
+    width: clamp(300px, 80%, 700px); height: auto; max-height: 40vh; 
+    fill: #01120a; z-index: 30;
 }
 
-/* 3. WADAH AWAN (Tanpa z-index agar bisa mengapit masjid) */
-.wadah-awan-interaksi {
-    position: absolute;
-    top: 45vh; /* Dinaikkan sangat tinggi agar menutupi tubuh masjid */
-    left: 0; width: 100vw; 
-    height: 55vh; 
-    /* PERHATIAN: TIDAK ADA Z-INDEX DI SINI AGAR EFEK 3D BEKERJA */
+/* 4. AWAN CERAH (Depan Masjid - Z: 40) */
+.awan-tengah {
+    position: absolute; bottom: 0; left: 0; width: 100%; 
+    height: 45vh; /* Lebih pendek sedikit dari awan gelap agar efek 3D terlihat */
+    z-index: 40; transform-origin: bottom center; pointer-events: none;
+    fill: #125438; animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
-
-.awan {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    transform-origin: bottom center; pointer-events: none;
-}
-
-/* AWAN GELAP (Di BELAKANG Masjid -> z-index: 30) */
-.awan-kiri { z-index: 30; fill: #082b1c; opacity: 0; animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
-.awan-kanan { z-index: 30; fill: #0a3623; opacity: 0; animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
-
-/* AWAN CERAH TENGAH (Di DEPAN Masjid -> z-index: 50) */
-.awan-tengah { z-index: 50; fill: #125438; animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 
 @keyframes sebarTengah { 0% { transform: scale(0.2) translateY(50px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
 @keyframes sebarKiri { 0% { transform: translateX(20%) scale(0.2); opacity: 0; } 100% { transform: translateX(-5%) scale(1); opacity: 1; } }
 @keyframes sebarKanan { 0% { transform: translateX(-20%) scale(0.2); opacity: 0; } 100% { transform: translateX(5%) scale(1); opacity: 1; } }
 
-/* 4. FORM & TOMBOL (Paling Depan -> z-index: 60) */
+/* 5. AREA INTERAKSI FORM (Paling Depan - Z: 50) */
 .area-interaksi {
-    position: absolute;
-    top: 25vh; /* Posisi di dalam perut awan cerah */
-    left: 50%; transform: translateX(-50%);
-    width: 90%; max-width: 450px;
-    z-index: 60; text-align: center;
+    position: absolute; bottom: 15vh; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 450px; z-index: 50; text-align: center;
     opacity: 0; animation: munculForm 1s ease forwards 1.2s; 
 }
 @keyframes munculForm { 0% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
@@ -160,165 +112,45 @@ html, body {
    OVERLAY UCAPAN
    ======================================================================= */
 .layar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 20, 14, 0.75); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 999; }
-
 .amplop { width: 90%; max-width: 600px; height: 60vh; min-height: 400px; position: absolute; z-index: 1001; perspective: 1000px; animation: amplopMuncul 1s ease-out forwards; }
 @keyframes amplopMuncul { 0% { transform: translateY(100vh); } 100% { transform: translateY(0); } }
-
 .panel-amplop { position: absolute; width: 50%; height: 100%; background: rgba(1, 18, 10, 0.85); backdrop-filter: blur(4px); border: 3px solid #FFD700; top: 0; transition: transform 1.5s ease-in-out; backface-visibility: hidden; }
-.panel-kiri { left: 0; border-right: none; transform-origin: left; border-radius: 10px 0 0 10px; }
-.panel-kanan { right: 0; border-left: none; transform-origin: right; border-radius: 0 10px 10px 0; }
+.panel-kiri { left: 0; border-right: none; transform-origin: left; border-radius: 10px 0 0 10px; } .panel-kanan { right: 0; border-left: none; transform-origin: right; border-radius: 0 10px 10px 0; }
 .panel-kiri::after, .panel-kanan::after { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(1, 18, 10, 0.85); top: 0; left: 0; z-index: -1; }
-.panel-kiri::after { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); }
-.panel-kanan::after { clip-path: polygon(100% 0%, 0% 50%, 100% 100%); }
-.buka-amplop .panel-kiri { transform: rotateY(-180deg); opacity: 0; }
-.buka-amplop .panel-kanan { transform: rotateY(180deg); opacity: 0; }
-
+.panel-kiri::after { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); } .panel-kanan::after { clip-path: polygon(100% 0%, 0% 50%, 100% 100%); }
+.buka-amplop .panel-kiri { transform: rotateY(-180deg); opacity: 0; } .buka-amplop .panel-kanan { transform: rotateY(180deg); opacity: 0; }
 .segel { width: 70px; height: 70px; background: #ff4d4d; border: 3px solid #FFD700; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #FFD700; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.6); transition: 0.3s; z-index: 1002; }
-.segel:hover { transform: translate(-50%, -50%) scale(1.1); }
-.buka-amplop .segel { opacity: 0; pointer-events: none; }
-
+.segel:hover { transform: translate(-50%, -50%) scale(1.1); } .buka-amplop .segel { opacity: 0; pointer-events: none; }
 .kotak-ucapan { width: 90%; max-width: 650px; padding: 50px 30px; background: rgba(6, 32, 22, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255, 215, 0, 0.5); border-radius: 15px; text-align: center; position: relative; z-index: 1000; opacity: 0; transform: scale(0.8); transition: 1s ease-out 0.5s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 .muncul-teks { opacity: 1 !important; transform: scale(1) !important; }
-.kotak-ucapan h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: #FFD700; margin-bottom: 10px; }
-.kotak-ucapan h2 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 15px; color: #FFE066;}
-.kotak-ucapan h3 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 25px; display: inline-block; border-bottom: 2px solid #FFD700; padding-bottom: 5px; color: #FFD700;}
-.kotak-ucapan p { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.6; color: #FFE066;}
-
+.kotak-ucapan h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: #FFD700; margin-bottom: 10px; } .kotak-ucapan h2 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 15px; color: #FFE066;} .kotak-ucapan h3 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 25px; display: inline-block; border-bottom: 2px solid #FFD700; padding-bottom: 5px; color: #FFD700;} .kotak-ucapan p { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.6; color: #FFE066;}
 .ketupat-ucapan { position: absolute; width: 50px; opacity: 0; }
-.ketupat-ucapan-kiri { top: -25px; left: -20px; transform: rotate(-20deg); }
-.ketupat-ucapan-kanan { bottom: -25px; right: -20px; transform: rotate(20deg); }
-.muncul-teks .ketupat-ucapan-kiri { animation: popKiri 0.8s ease-out forwards 1.2s; }
-.muncul-teks .ketupat-ucapan-kanan { animation: popKanan 0.8s ease-out forwards 1.2s; }
+.ketupat-ucapan-kiri { top: -25px; left: -20px; transform: rotate(-20deg); } .ketupat-ucapan-kanan { bottom: -25px; right: -20px; transform: rotate(20deg); }
+.muncul-teks .ketupat-ucapan-kiri { animation: popKiri 0.8s ease-out forwards 1.2s; } .muncul-teks .ketupat-ucapan-kanan { animation: popKanan 0.8s ease-out forwards 1.2s; }
 .muncul-teks .ketupat-ucapan g { animation: goyangKetupat 3s ease-in-out infinite alternate 2s; transform-origin: top center; }
-@keyframes popKiri { 0% { transform: scale(0) rotate(-40deg); opacity: 0; } 100% { transform: scale(1) rotate(-20deg); opacity: 1; } }
-@keyframes popKanan { 0% { transform: scale(0) rotate(40deg); opacity: 0; } 100% { transform: scale(1) rotate(20deg); opacity: 1; } }
-
+@keyframes popKiri { 0% { transform: scale(0) rotate(-40deg); opacity: 0; } 100% { transform: scale(1) rotate(-20deg); opacity: 1; } } @keyframes popKanan { 0% { transform: scale(0) rotate(40deg); opacity: 0; } 100% { transform: scale(1) rotate(20deg); opacity: 1; } }
 #konfeti-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1003; overflow: hidden; }
 .potongan-kertas { position: absolute; opacity: 0; animation: jatuhKertas linear forwards; }
 @keyframes jatuhKertas { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
 
 /* =======================================================================
-   PENYESUAIAN KHUSUS HP (MOBILE VIEW)
+   PENYESUAIAN MOBILE VIEW
    ======================================================================= */
 @media (max-width: 768px) {
     .judul-container { top: 6vh; }
-    
     .bulan { top: 12vh; width: 230px; height: 230px; }
     
-    .masjid { bottom: 45vh; width: 95%; max-height: 35vh; }
+    /* AWAN GELAP (BELAKANG) DITAIKKAN SANGAT TINGGI */
+    .awan-kiri, .awan-kanan { height: 60vh; } 
     
-    /* WADAH AWAN DINAIKKAN LEBIH TINGGI UNTUK MENGAPIT MASJID */
-    .wadah-awan-interaksi { top: 40vh; height: 60vh; } 
+    /* MASJID DITURUNKAN SEDIKIT AGAR TERTELAN AWAN GELAP */
+    .masjid { bottom: 32vh; width: 95%; max-height: 35vh; } 
     
-    /* FORM & TOMBOL */
-    .area-interaksi { top: 28vh; width: 90%; } 
+    /* AWAN CERAH (DEPAN) NAIK TINGGI MENUTUPI DEPAN MASJID */
+    .awan-tengah { height: 50vh; } 
     
-    #nama-input { font-size: 1rem; padding: 10px; }
-    .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
-    .kotak-ucapan { padding: 40px 15px; width: 95%; }
-    .ketupat-ucapan { width: 40px; }
-    .segel { width: 60px; height: 60px; font-size: 1.2rem; }
-}
-
-/* 3. AWAN (Ditarik ke tengah layar untuk menutupi dasar masjid) */
-.wadah-awan-interaksi {
-    position: absolute;
-    top: 50vh; /* Tepat di tengah layar, menelan tiang masjid */
-    left: 0; width: 100vw; 
-    height: 50vh; /* Memenuhi sisa setengah layar ke bawah */
-    z-index: 50;
-}
-
-.awan {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    transform-origin: bottom center; pointer-events: none;
-}
-.awan-tengah { z-index: 53; fill: #125438; animation: sebarTengah 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-.awan-kiri { z-index: 51; fill: #082b1c; opacity: 0; animation: sebarKiri 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
-.awan-kanan { z-index: 52; fill: #0a3623; opacity: 0; animation: sebarKanan 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s; }
-
-@keyframes sebarTengah { 0% { transform: scale(0.2) translateY(50px); opacity: 0; } 100% { transform: scale(1) translateY(0); opacity: 1; } }
-@keyframes sebarKiri { 0% { transform: translateX(20%) scale(0.2); opacity: 0; } 100% { transform: translateX(-5%) scale(1); opacity: 1; } }
-@keyframes sebarKanan { 0% { transform: translateX(-20%) scale(0.2); opacity: 0; } 100% { transform: translateX(5%) scale(1); opacity: 1; } }
-
-/* 4. FORM & TOMBOL */
-.area-interaksi {
-    position: absolute;
-    top: 20vh; /* Diturunkan ke bagian tengah awan yang baru */
-    left: 50%; transform: translateX(-50%);
-    width: 90%; max-width: 450px;
-    z-index: 60; text-align: center;
-    opacity: 0; animation: munculForm 1s ease forwards 1.2s; 
-}
-@keyframes munculForm { 0% { opacity: 0; transform: translate(-50%, 20px); } 100% { opacity: 1; transform: translate(-50%, 0); } }
-
-.input-grup { margin-bottom: 12px; }
-#nama-input { width: 100%; padding: 12px 20px; border: 2px solid #FFD700; border-radius: 30px; background-color: rgba(1, 18, 10, 0.85); color: #FFD700; font-size: 1.2rem; text-align: center; outline: none; transition: 0.3s; }
-#nama-input:focus { box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); }
-.alert { color: #ff4d4d; margin-top: 5px; font-size: 0.9rem; font-family: sans-serif; }
-.btn-mewah { padding: 10px 35px; font-size: 1.4rem; color: #01120a; background: linear-gradient(135deg, #FFD700, #FFE066); border: none; border-radius: 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.2s; }
-.btn-mewah:hover { transform: scale(1.05); }
-
-
-/* =======================================================================
-   OVERLAY UCAPAN
-   ======================================================================= */
-.layar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(4, 20, 14, 0.75); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 999; }
-
-.amplop { width: 90%; max-width: 600px; height: 60vh; min-height: 400px; position: absolute; z-index: 1001; perspective: 1000px; animation: amplopMuncul 1s ease-out forwards; }
-@keyframes amplopMuncul { 0% { transform: translateY(100vh); } 100% { transform: translateY(0); } }
-
-.panel-amplop { position: absolute; width: 50%; height: 100%; background: rgba(1, 18, 10, 0.85); backdrop-filter: blur(4px); border: 3px solid #FFD700; top: 0; transition: transform 1.5s ease-in-out; backface-visibility: hidden; }
-.panel-kiri { left: 0; border-right: none; transform-origin: left; border-radius: 10px 0 0 10px; }
-.panel-kanan { right: 0; border-left: none; transform-origin: right; border-radius: 0 10px 10px 0; }
-.panel-kiri::after, .panel-kanan::after { content: ''; position: absolute; width: 100%; height: 100%; background: rgba(1, 18, 10, 0.85); top: 0; left: 0; z-index: -1; }
-.panel-kiri::after { clip-path: polygon(0% 0%, 100% 50%, 0% 100%); }
-.panel-kanan::after { clip-path: polygon(100% 0%, 0% 50%, 100% 100%); }
-.buka-amplop .panel-kiri { transform: rotateY(-180deg); opacity: 0; }
-.buka-amplop .panel-kanan { transform: rotateY(180deg); opacity: 0; }
-
-.segel { width: 70px; height: 70px; background: #ff4d4d; border: 3px solid #FFD700; border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #FFD700; font-size: 1.4rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.6); transition: 0.3s; z-index: 1002; }
-.segel:hover { transform: translate(-50%, -50%) scale(1.1); }
-.buka-amplop .segel { opacity: 0; pointer-events: none; }
-
-.kotak-ucapan { width: 90%; max-width: 650px; padding: 50px 30px; background: rgba(6, 32, 22, 0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255, 215, 0, 0.5); border-radius: 15px; text-align: center; position: relative; z-index: 1000; opacity: 0; transform: scale(0.8); transition: 1s ease-out 0.5s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-.muncul-teks { opacity: 1 !important; transform: scale(1) !important; }
-.kotak-ucapan h1 { font-size: clamp(2.2rem, 5vw, 3rem); color: #FFD700; margin-bottom: 10px; }
-.kotak-ucapan h2 { font-size: clamp(1.2rem, 3vw, 1.5rem); margin-bottom: 15px; color: #FFE066;}
-.kotak-ucapan h3 { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 25px; display: inline-block; border-bottom: 2px solid #FFD700; padding-bottom: 5px; color: #FFD700;}
-.kotak-ucapan p { font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.6; color: #FFE066;}
-
-.ketupat-ucapan { position: absolute; width: 50px; opacity: 0; }
-.ketupat-ucapan-kiri { top: -25px; left: -20px; transform: rotate(-20deg); }
-.ketupat-ucapan-kanan { bottom: -25px; right: -20px; transform: rotate(20deg); }
-.muncul-teks .ketupat-ucapan-kiri { animation: popKiri 0.8s ease-out forwards 1.2s; }
-.muncul-teks .ketupat-ucapan-kanan { animation: popKanan 0.8s ease-out forwards 1.2s; }
-.muncul-teks .ketupat-ucapan g { animation: goyangKetupat 3s ease-in-out infinite alternate 2s; transform-origin: top center; }
-@keyframes popKiri { 0% { transform: scale(0) rotate(-40deg); opacity: 0; } 100% { transform: scale(1) rotate(-20deg); opacity: 1; } }
-@keyframes popKanan { 0% { transform: scale(0) rotate(40deg); opacity: 0; } 100% { transform: scale(1) rotate(20deg); opacity: 1; } }
-
-#konfeti-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1003; overflow: hidden; }
-.potongan-kertas { position: absolute; opacity: 0; animation: jatuhKertas linear forwards; }
-@keyframes jatuhKertas { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
-
-/* =======================================================================
-   PENYESUAIAN KHUSUS HP (MOBILE VIEW)
-   ======================================================================= */
-@media (max-width: 768px) {
-    .judul-container { top: 6vh; }
-    
-    /* 1. BULAN: Diatur lebih kecil dan turun ke 15vh dari atas */
-    .bulan { top: 15vh; width: 230px; height: 230px; }
-    
-    /* 2. MASJID: Dasarnya berada di 55vh dari atas (berarti tingginya sampai bulan) */
-    .masjid { bottom: 45vh; width: 95%; max-height: 35vh; }
-    
-    /* 3. AWAN: Ditarik ke tengah layar untuk menutupi dasar masjid */
-    .wadah-awan-interaksi { top: 48vh; height: 52vh; } 
-    
-    /* 4. FORM & TOMBOL: Posisinya disesuaikan agar pas di perut awan */
-    .area-interaksi { top: 22vh; width: 90%; } 
+    /* TOMBOL FORM AMAN DI PERUT AWAN DEPAN */
+    .area-interaksi { bottom: 18vh; width: 90%; } 
     
     #nama-input { font-size: 1rem; padding: 10px; }
     .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
