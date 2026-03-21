@@ -110,12 +110,12 @@ html, body {
     fill: #01120a; z-index: 40;
 }
 
-/* 3. AWAN (Memulai TEPAT di 60vh dari atas, mengisi sisa layar ke bawah) */
+/* 3. AWAN (Dinaikkan ke atas agar menutupi dasar masjid) */
 .wadah-awan-interaksi {
     position: absolute;
-    top: 60vh; /* Titik temu dengan dasar masjid. TIDAK ADA CELAH */
+    top: 56vh; /* AWAN DINAIKKAN: Menimpa bagian bawah masjid agar tidak melayang */
     left: 0; width: 100vw; 
-    height: 40vh; /* Sisa ruang layar ke bawah */
+    height: 45vh; /* Sisa ruang ditambah agar tetap menutup sampai bawah */
     z-index: 50;
 }
 
@@ -204,11 +204,11 @@ html, body {
     /* 2. MASJID: Dasarnya berada di 55vh dari atas (berarti tingginya sampai bulan) */
     .masjid { bottom: 45vh; width: 95%; max-height: 35vh; }
     
-    /* 3. AWAN: Mulai persis di dasar masjid (55vh dari atas) dan mengambil sisa 45vh ke bawah */
-    .wadah-awan-interaksi { top: 55vh; height: 45vh; } 
+    /* 3. AWAN DINAIKKAN: Menutupi tiang bawah masjid agar terlihat tenggelam */
+    .wadah-awan-interaksi { top: 49vh; height: 55vh; } 
     
-    /* 4. FORM & TOMBOL: Ditaruh nyaman di dalam ruang awan */
-    .area-interaksi { top: 10vh; width: 90%; } 
+    /* 4. FORM & TOMBOL: Posisinya sedikit diturunkan agar pas di perut awan yang baru naik */
+    .area-interaksi { top: 16vh; width: 90%; } 
     
     #nama-input { font-size: 1rem; padding: 10px; }
     .btn-mewah { padding: 8px 25px; font-size: 1.2rem; }
